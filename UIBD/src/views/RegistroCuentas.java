@@ -8,6 +8,10 @@ import Entidades.Cuenta;
 import Entidades.Usuario;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import Entidades.Movimiento;
+import bd.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 /**
  *
@@ -23,11 +27,6 @@ public class RegistroCuentas extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
-    public RegistroCuentas() {
-        initComponents();
-        setLocationRelativeTo(null);
-        lblValidator.setVisible(false);
-    }
 
     /**
     /**
@@ -50,6 +49,8 @@ public class RegistroCuentas extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         TipoCuenta = new javax.swing.JComboBox<>();
         lblValidator = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        Monto = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,7 +65,7 @@ public class RegistroCuentas extends javax.swing.JFrame {
 
         jLabel3.setText("Nombre de la cuenta: ");
 
-        jLabel4.setText("Descripción");
+        jLabel4.setText("Descripción:");
 
         jButton2.setText("Registrar Cuenta");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +80,7 @@ public class RegistroCuentas extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setText("Tipo de Cuenta");
+        jLabel6.setText("Tipo de Cuenta:");
 
         TipoCuenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Tarjeta de Credito", "Tarjeta de Debito" }));
         TipoCuenta.addActionListener(new java.awt.event.ActionListener() {
@@ -91,70 +92,82 @@ public class RegistroCuentas extends javax.swing.JFrame {
         lblValidator.setForeground(new java.awt.Color(255, 51, 51));
         lblValidator.setText("Problema al llegar los cuadros!");
 
+        jLabel8.setText("Monto Inicial:");
+
+        Monto.setText("$$$");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TipoCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(jLabel3)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(82, 82, 82))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jButton2)
+                                .addGap(43, 43, 43))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(NameCount, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .addComponent(DescCount)
-                            .addComponent(TipoCuenta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(11, 11, 11))
+                            .addComponent(DescCount)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(jButton2)
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                        .addComponent(Monto, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(17, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(168, 168, 168)
+                .addGap(174, 174, 174)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lblValidator)))
+                    .addComponent(lblValidator))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblValidator)
                 .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(NameCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(NameCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(DescCount, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(TipoCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(jLabel6)
+                    .addComponent(TipoCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(Monto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         TipoCuenta.getAccessibleContext().setAccessibleDescription("");
@@ -163,9 +176,9 @@ public class RegistroCuentas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Movimientos mov = new Movimientos();
+        Movimientos mov = new Movimientos(su);
         mov.setTitle("Movimientos contables");
-    mov.setVisible(true);
+        mov.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -174,13 +187,17 @@ public class RegistroCuentas extends javax.swing.JFrame {
         cn.setName(NameCount.getText());
         cn.setDesc(DescCount.getText());
         cn.setTipo_cuenta(TipoCuenta.getSelectedIndex());
-        System.out.println(cn.getTipo_cuenta());
+        cn.setMonto(Integer.parseInt(Monto.getText()));
+        System.out.println(cn.getTipo_cuenta()+"\n$$$"+cn.getMonto());
       
        try{
             if(cn !=null){
                 cn.CrearEnDb();
-                System.out.println("PUTA FUNCIONA");
+                System.out.println("PUTA FUNCIONA"+su.getUsername());
                 JOptionPane.showMessageDialog(this,"Cuenta Creada Correctamente","Success",JOptionPane.INFORMATION_MESSAGE);
+               //su.setCuentas(cn);
+                Movimiento mv = new Movimiento();
+                mv.FirstMove(su, cn);
                 
                 //PONERACA EL LOGIN A MOVIMIENTOS
             }else{
@@ -189,7 +206,8 @@ public class RegistroCuentas extends javax.swing.JFrame {
         }catch(SQLException e){
             lblValidator.setVisible(true);
         }
-        
+       
+       
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void NameCountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameCountActionPerformed
@@ -207,6 +225,7 @@ public class RegistroCuentas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField DescCount;
+    private javax.swing.JTextField Monto;
     private javax.swing.JTextField NameCount;
     private javax.swing.JComboBox<String> TipoCuenta;
     private javax.swing.JButton jButton1;
@@ -216,6 +235,7 @@ public class RegistroCuentas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel lblValidator;
     // End of variables declaration//GEN-END:variables
 }

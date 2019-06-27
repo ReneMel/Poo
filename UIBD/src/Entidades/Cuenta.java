@@ -20,6 +20,7 @@ public class Cuenta {
     private String desc;
     private int tipo_cuenta;
     private int id;
+    private int Monto;
     
     public Connection cn;
     Conexion bd = new Conexion();
@@ -67,6 +68,16 @@ public class Cuenta {
     public void setId(int id) {
         this.id = id;
     }
+
+    public int getMonto() {
+        return Monto;
+    }
+
+    public void setMonto(int Monto) {
+        this.Monto = Monto;
+    }
+    
+    
     
     
     

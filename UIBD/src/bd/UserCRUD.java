@@ -40,7 +40,7 @@ public class UserCRUD {
                 usuario.setPassword(rs.getString("contrasena"));
                 usuario.setId(rs.getInt("id_usuario"));
                 
-                System.out.println(usuario.getId());
+                System.out.println(usuario.getId()+"Vea que funciona");
                 flag = true;
             }
             if(!flag) usuario = null;

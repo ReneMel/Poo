@@ -15,10 +15,7 @@ public class Movimientos extends javax.swing.JFrame {
 
     
     Usuario su;
-    public Movimientos() {
-        initComponents();
-        setLocationRelativeTo(null);
-    }
+
 
     public Movimientos(Usuario su) {
         this.su=su;
@@ -115,7 +112,7 @@ public class Movimientos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        RegistroCuentas reg = new RegistroCuentas();
+        RegistroCuentas reg = new RegistroCuentas(su);
         reg.setTitle("Registro de cuenta");
         reg.setVisible(true);
         this.dispose();
@@ -152,7 +149,7 @@ public class Movimientos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Movimientos().setVisible(true);
+               // new Movimientos().setVisible(true);
             }
         });
     }

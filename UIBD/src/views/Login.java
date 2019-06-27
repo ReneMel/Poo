@@ -166,12 +166,13 @@ public class Login extends javax.swing.JFrame {
         UserCRUD userDao = new UserCRUD();
         
         try{
-            Usuario user = userDao.login(txtUsername.getText(), new String(txtPassword.getPassword()));
+            Usuario user = userDao.login(txtUsername.getText().toUpperCase(), new String(txtPassword.getPassword()));
             if(user !=null){
+                System.out.println(user.getUsername()+user.getId());
                 Movimientos moves = new Movimientos(user);
                 setVisible(false);
                 moves.setVisible(true);
-                System.out.println("PUTA FUNCIONA");
+                System.out.println("PUTA FUNCIONA"+user.getUsername());
                 
                 //PONERACA EL LOGIN A MOVIMIENTOS
             }else{

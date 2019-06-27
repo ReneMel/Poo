@@ -5,15 +5,15 @@
  */
 package views;
 
+import Entidades.Usuario;
+
 /**
  *
  * @author christian
  */
 public class VerCuentas extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Cuentas
-     */
+    Usuario su= new Usuario();
     public VerCuentas() {
         initComponents();
         setLocationRelativeTo(null);
@@ -193,7 +193,7 @@ public class VerCuentas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Movimientos mov = new Movimientos();
+        Movimientos mov = new Movimientos(su);
         mov.setTitle("Movimientos");
         mov.setVisible(true);
         this.dispose();
