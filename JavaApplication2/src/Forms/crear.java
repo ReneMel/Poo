@@ -163,10 +163,10 @@ public class crear extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    	/*Usuario su= new Usuario();
+    	Usuario su= new Usuario();
         su.setName(jTextField1.getText());
         su.setPsswd(jPasswordField1.getText());
-        su.SignUp();*/
+        su.SignUp();
         this.dispose();
         Registrado nueva = new Registrado();
         nueva.setTitle("Usuario Registrado");

@@ -1,7 +1,7 @@
 package ejemplos;
 
 
-import ejemplos.PostgreSqlExample;
+import folder.PostgreSqlExample;
 import java.sql.Connection;
 import java.sql.Connection;
 import java.sql.DriverManager;
