@@ -99,10 +99,10 @@ public class menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        loggin window = new loggin();
+       /* loggin window = new loggin();
         window.setTitle("Inicio de session");
         window.setVisible(true);
-        this.dispose();
+        this.dispose();*/
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -110,10 +110,10 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        crear window = new crear();
+       /* crear window = new crear();
         window.setTitle("Crear Usuario");
         window.setVisible(true);
-        this.dispose();
+        this.dispose();*/
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
