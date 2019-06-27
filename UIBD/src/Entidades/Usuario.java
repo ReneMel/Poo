@@ -5,6 +5,8 @@
  */
 package Entidades;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author carlo
@@ -12,18 +14,31 @@ package Entidades;
 public class Usuario {
     private String username;
     private String password;
-    private String name;
+    private int id;
+    
+    ArrayList<Cuenta> cuentas = new ArrayList();
+    
+    
+
 
     public Usuario() {
     }
-    
-    
-    public Usuario(String username, String password, String name) {
+
+    public Usuario(String username, String password, int id) {
         this.username = username;
         this.password = password;
-        this.name = name;
+        this.id = id;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    
     public String getUsername() {
         return username;
     }
@@ -40,14 +55,12 @@ public class Usuario {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
-    }
+    
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCuentas(Cuenta cd) {
+        cuentas.add(cd);
     }
     
     
-    
+
 }

@@ -36,8 +36,11 @@ public class UserCRUD {
             ResultSet rs = pstm.executeQuery();
             
             while(rs.next()){
-                usuario.setName(rs.getString("usuario"));
+                usuario.setUsername(rs.getString("usuario"));
                 usuario.setPassword(rs.getString("contrasena"));
+                usuario.setId(rs.getInt("id_usuario"));
+                
+                System.out.println(usuario.getId());
                 flag = true;
             }
             if(!flag) usuario = null;
@@ -48,7 +51,7 @@ public class UserCRUD {
         }
         return usuario;
     }
-    public boolean signUp(String name,String username, String password) throws SQLException{
+    public boolean signUp(String username, String password) throws SQLException{
         Connection conn = bd.getConnection();
         boolean isSuccess = false;
         String query = "INSERT INTO usuario (usuario,contrasena) VALUES (?,?)";

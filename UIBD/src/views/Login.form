@@ -160,7 +160,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Bad credentials! please try again"/>
+            <Property name="text" type="java.lang.String" value="Contrase&#xf1;a o Usuario Incorrectos! "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JPasswordField" name="txtPassword">

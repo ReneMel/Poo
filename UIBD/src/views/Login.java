@@ -70,7 +70,7 @@ public class Login extends javax.swing.JFrame {
 
         lblValidator.setBackground(new java.awt.Color(255, 51, 51));
         lblValidator.setForeground(new java.awt.Color(255, 51, 51));
-        lblValidator.setText("Bad credentials! please try again");
+        lblValidator.setText("Contraseña o Usuario Incorrectos! ");
 
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setText("Create new user?");
@@ -168,9 +168,9 @@ public class Login extends javax.swing.JFrame {
         try{
             Usuario user = userDao.login(txtUsername.getText(), new String(txtPassword.getPassword()));
             if(user !=null){
-                //Dashboard dashboard = new Dashboard(user);
-                //setVisible(false);
-                //dashboard.setVisible(true);
+                Movimientos moves = new Movimientos(user);
+                setVisible(false);
+                moves.setVisible(true);
                 System.out.println("PUTA FUNCIONA");
                 
                 //PONERACA EL LOGIN A MOVIMIENTOS

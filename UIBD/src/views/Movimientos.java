@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Forms;
+package views;
+
+import Entidades.Usuario;
 
 /**
  *
@@ -11,13 +13,17 @@ package Forms;
  */
 public class Movimientos extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Cuentas
-     */
+    
+    Usuario su;
     public Movimientos() {
         initComponents();
         setLocationRelativeTo(null);
-        
+    }
+
+    public Movimientos(Usuario su) {
+        this.su=su;
+        initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
