@@ -7,6 +7,7 @@ package Entidades;
 
 import java.sql.Connection;
 import bd.Conexion;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,6 +22,9 @@ public class Cuenta {
     private int tipo_cuenta;
     private int id;
     private int Monto;
+    private Date E;
+    
+    
     
     public Connection cn;
     Conexion bd = new Conexion();
@@ -43,6 +47,15 @@ public class Cuenta {
     public void setTipo_cuenta(int tipo_cuenta) {
         this.tipo_cuenta = tipo_cuenta;
     }
+
+    public Date getE() {
+        return E;
+    }
+
+    public void setE(Date E) {
+        this.E = E;
+    }
+
 
     
     public String getName() {
@@ -117,5 +130,7 @@ public class Cuenta {
         }
         return isSuccess;
     }
+ 
+
     
 }

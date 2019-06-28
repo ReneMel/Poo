@@ -80,11 +80,11 @@ public class UserCRUD {
     public List<Cuenta> getCuentas(Usuario su, int cat){
         Connection conn = bd.getConnection();
         List<Cuenta> cuentas = new ArrayList();
-        String query = "SELECT cu.id_cuenta,cu.nombre, mov.monto, id_categoria\n" +
-                        "FROM movimiento mov, usuario u, cuenta cu\n" +
-                        "WHERE mov.id_usuario=? and mov.id_categoria=?\n" +
-                        "order by mov.fecha desc\n" +
-                        "limit 1";
+        String query = "SELECT cu.id_cuenta,cu.nombre, mov.monto, id_categoria, mov.fecha\n" +
+                       "FROM movimiento mov, usuario u, cuenta cu\n" +
+                       "WHERE mov.id_usuario=? and mov.id_categoria=?\n" +
+                       "order by mov.fecha,mov.id_cuenta desc\n" +
+                       "limit 1" ;
         
         try{
             PreparedStatement stm = conn.prepareStatement(query);
@@ -98,6 +98,7 @@ public class UserCRUD {
                 cu.setName(rs.getString("nombre"));
                 cu.setTipo_cuenta(rs.getInt("id_categoria"));
                 cu.setMonto(rs.getInt("monto"));
+               // cu.setDate(Integer.toString(rs.getInt("fecha")));
                 cuentas.add(cu);
             }
             //conn.close();

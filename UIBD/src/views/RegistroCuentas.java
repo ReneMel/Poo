@@ -195,7 +195,7 @@ public class RegistroCuentas extends javax.swing.JFrame {
        try{
             if(cn !=null){
                 cn.CrearEnDb();
-                System.out.println("PUTA FUNCIONA"+su.getUsername());
+                //System.out.println("PUTA FUNCIONA"+su.getUsername());
                 JOptionPane.showMessageDialog(this,"Cuenta Creada Correctamente","Success",JOptionPane.INFORMATION_MESSAGE);
                //su.setCuentas(cn);
                 Movimiento mv = new Movimiento();
