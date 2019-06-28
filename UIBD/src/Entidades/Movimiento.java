@@ -28,12 +28,14 @@ public class Movimiento {
     Conexion bd= new Conexion();
     
     public void FirstMove(Usuario su,Cuenta cn){
+        
+        System.out.println("SINCERAMENTE NO ENTIENDO :  "+su.getId());
         Connection conn = bd.getConnection();
         boolean isSuccess = false;
         String query = "insert into movimiento(id_usuario,id_categoria,id_cuenta,id_operacion,monto,fecha,descripcion) values(?,?,?,?,?,'2018/12/12',?);";
         try{
             PreparedStatement pstm = conn.prepareStatement(query);
-            pstm.setInt(1, 13);
+            pstm.setInt(1, su.getId());
             pstm.setInt(2, cn.getTipo_cuenta());
             pstm.setInt(3, cn.getId());
             pstm.setInt(4, 1);

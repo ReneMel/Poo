@@ -22,9 +22,11 @@ public class RegistroCuentas extends javax.swing.JFrame {
     Usuario su;
     
     public RegistroCuentas(Usuario su) {
+        
         this.su=su;
         initComponents();
         setLocationRelativeTo(null);
+        lblValidator.setVisible(false);
     }
 
 
@@ -82,7 +84,7 @@ public class RegistroCuentas extends javax.swing.JFrame {
 
         jLabel6.setText("Tipo de Cuenta:");
 
-        TipoCuenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Tarjeta de Credito", "Tarjeta de Debito" }));
+        TipoCuenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Tarjeta de Debito", "Tarjeta de Credito" }));
         TipoCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TipoCuentaActionPerformed(evt);
@@ -186,7 +188,7 @@ public class RegistroCuentas extends javax.swing.JFrame {
         Cuenta cn = new Cuenta();
         cn.setName(NameCount.getText());
         cn.setDesc(DescCount.getText());
-        cn.setTipo_cuenta(TipoCuenta.getSelectedIndex());
+        cn.setTipo_cuenta(TipoCuenta.getSelectedIndex()+1);
         cn.setMonto(Integer.parseInt(Monto.getText()));
         System.out.println(cn.getTipo_cuenta()+"\n$$$"+cn.getMonto());
       

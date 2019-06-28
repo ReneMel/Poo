@@ -5,6 +5,7 @@
  */
 package bd;
 
+import Entidades.Cuenta;
 import Entidades.Usuario;
 import java.util.List;
 import java.sql.Connection;
@@ -75,5 +76,36 @@ public class UserCRUD {
         }
         return isSuccess;
     }
+
+    public List<Cuenta> getCuentas(Usuario su, int cat){
+        Connection conn = bd.getConnection();
+        List<Cuenta> cuentas = new ArrayList();
+        String query = "SELECT cu.id_cuenta,cu.nombre, mov.monto, id_categoria\n" +
+                        "FROM movimiento mov, usuario u, cuenta cu\n" +
+                        "WHERE mov.id_usuario=? and mov.id_categoria=?\n" +
+                        "order by mov.fecha desc\n" +
+                        "limit 1";
+        
+        try{
+            PreparedStatement stm = conn.prepareStatement(query);
+            stm.setInt(1, su.getId());
+            stm.setInt(2, cat);
+            
+            ResultSet rs = stm.executeQuery();
+            while(rs.next()){
+                Cuenta cu = new Cuenta();
+                cu.setId(rs.getInt("id_cuenta"));
+                cu.setName(rs.getString("nombre"));
+                cu.setTipo_cuenta(rs.getInt("id_categoria"));
+                cu.setMonto(rs.getInt("monto"));
+                cuentas.add(cu);
+            }
+            //conn.close();
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        return cuentas;
+    }
+
     
 }
