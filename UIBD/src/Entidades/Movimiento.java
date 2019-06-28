@@ -65,7 +65,7 @@ public class Movimiento {
         Connection conn = bd.getConnection();
         boolean isSuccess = false;
         int newmonto=cn.getMonto()+ing;
-        String query = "insert into movimiento(id_usuario,id_categoria,id_cuenta,id_operacion,monto,fecha,descripcion) values(?,?,?,?,?,'2019/06/28',?);";
+        String query = "insert into movimiento(id_usuario,id_categoria,id_cuenta,id_operacion,monto,fecha,descripcion) values(?,?,?,?,?,?,?);";
         try{
             PreparedStatement pstm = conn.prepareStatement(query);
             pstm.setInt(1, su.getId());
@@ -73,8 +73,8 @@ public class Movimiento {
             pstm.setInt(3, cn.getId());
             pstm.setInt(4, 1);
             pstm.setInt(5, newmonto);
-           //pstm.setString(6,"'2018/12/12'");
-            pstm.setString(6 ,cn.getDesc());
+            pstm.setDate(6,cn.getE());
+            pstm.setString(7 ,cn.getDesc());
             
             
             
@@ -94,7 +94,7 @@ public void Egreso(Usuario su, Cuenta cn,int ing){
         Connection conn = bd.getConnection();
         boolean isSuccess = false;
         int newmonto=cn.getMonto()-ing;
-        String query = "insert into movimiento(id_usuario,id_categoria,id_cuenta,id_operacion,monto,fecha,descripcion) values(?,?,?,?,?,'2019/06/28',?);";
+        String query = "insert into movimiento(id_usuario,id_categoria,id_cuenta,id_operacion,monto,fecha,descripcion) values(?,?,?,?,?,?,?);";
         try{
             PreparedStatement pstm = conn.prepareStatement(query);
             pstm.setInt(1, su.getId());
@@ -102,8 +102,8 @@ public void Egreso(Usuario su, Cuenta cn,int ing){
             pstm.setInt(3, cn.getId());
             pstm.setInt(4, 2);
             pstm.setInt(5, newmonto);
-           //pstm.setString(6,"'2018/12/12'");
-            pstm.setString(6 ,cn.getDesc());
+            pstm.setDate(6,cn.getE());
+            pstm.setString(7 ,cn.getDesc());
             
             
             

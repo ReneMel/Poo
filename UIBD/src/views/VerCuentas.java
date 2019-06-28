@@ -25,6 +25,7 @@ public class VerCuentas extends javax.swing.JFrame {
         this.su=su;
         initComponents();
         setLocationRelativeTo(null);
+        Username.setText(su.getUsername());
         
     }
     public VerCuentas() {
@@ -118,7 +119,7 @@ public class VerCuentas extends javax.swing.JFrame {
 
         dinero.setText("$$$");
 
-        fecha.setText("  ");
+        fecha.setText("YYY/MMM/DDD");
 
         CargarData.setText("Cargar");
         CargarData.addActionListener(new java.awt.event.ActionListener() {
@@ -146,8 +147,8 @@ public class VerCuentas extends javax.swing.JFrame {
                                 .addComponent(dinero))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -241,7 +242,8 @@ public class VerCuentas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Egreso egreso = new Egreso(su,cuentita=cuentas.get(Cuentas.getSelectedIndex()));
+        cuentita=cuentas.get(Cuentas.getSelectedIndex());
+        Egreso egreso = new Egreso(su,cuentita);
         egreso.setTitle("Egreso");
         egreso.setVisible(true);
         this.dispose();
@@ -268,6 +270,8 @@ public class VerCuentas extends javax.swing.JFrame {
      Cuenta novocuenta=cuentas.get(Cuentas.getSelectedIndex());
      //fecha.setText(novocuenta.getDate());
      dinero.setText(Integer.toString(novocuenta.getMonto()));
+        System.out.println(novocuenta.getE());
+     fecha.setText(novocuenta.getE().toString());
      
     }//GEN-LAST:event_CargarDataActionPerformed
 

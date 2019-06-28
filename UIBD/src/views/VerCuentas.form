@@ -40,8 +40,8 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="fecha" min="-2" pref="14" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="fecha" min="-2" pref="92" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
@@ -235,7 +235,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="fecha">
       <Properties>
-        <Property name="text" type="java.lang.String" value="  "/>
+        <Property name="text" type="java.lang.String" value="YYY/MMM/DDD"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="CargarData">

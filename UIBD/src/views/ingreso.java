@@ -8,9 +8,9 @@ package views;
 import Entidades.Cuenta;
 import Entidades.Movimiento;
 import Entidades.Usuario;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
+import java.util.Date;
 
 /**
  *
@@ -52,7 +52,7 @@ public class ingreso extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         Ingreso = new javax.swing.JButton();
-        jfnac = new com.toedter.calendar.JDateChooser();
+        Fecha = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
         Desc = new javax.swing.JTextField();
 
@@ -107,7 +107,7 @@ public class ingreso extends javax.swing.JFrame {
                                         .addComponent(jLabel4)
                                         .addGap(56, 56, 56)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jfnac, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                                    .addComponent(Fecha, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                                     .addComponent(Desc))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -140,7 +140,7 @@ public class ingreso extends javax.swing.JFrame {
                             .addComponent(jLabel5)))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jfnac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
@@ -168,6 +168,9 @@ public class ingreso extends javax.swing.JFrame {
 
     private void IngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresoActionPerformed
         Movimiento mov = new Movimiento();
+        java.sql.Date sqldate = new java.sql.Date(Fecha.getDate().getTime());
+        Date date = Fecha.getDate();
+        cn.setE(sqldate);
         //String fecha=Fecha.;
         //System.out.println(fecha);
         cn.setDesc(Desc.getText());
@@ -213,6 +216,7 @@ public class ingreso extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Desc;
+    private com.toedter.calendar.JDateChooser Fecha;
     private javax.swing.JButton Ingreso;
     private javax.swing.JTextField Monto;
     private javax.swing.JButton jButton1;
@@ -221,6 +225,5 @@ public class ingreso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private com.toedter.calendar.JDateChooser jfnac;
     // End of variables declaration//GEN-END:variables
 }

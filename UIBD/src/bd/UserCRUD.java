@@ -98,7 +98,7 @@ public class UserCRUD {
                 cu.setName(rs.getString("nombre"));
                 cu.setTipo_cuenta(rs.getInt("id_categoria"));
                 cu.setMonto(rs.getInt("monto"));
-               // cu.setDate(Integer.toString(rs.getInt("fecha")));
+                cu.setE(rs.getDate("fecha"));
                 cuentas.add(cu);
             }
             //conn.close();

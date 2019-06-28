@@ -23,6 +23,7 @@ public class Cuenta {
     private int id;
     private int Monto;
     private Date E;
+    private String fecha;
     
     
     
@@ -40,6 +41,16 @@ public class Cuenta {
         this.desc = desc;
     }
 
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+    
+    
+    
     public int getTipo_cuenta() {
         return tipo_cuenta;
     }
